@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+    <name>Imedia_ProductInquiry</name>
+    <version>0.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This Product Inquiry Module allows customers to make inquiry about a product directly from the product page.</summary>
+    <description>This Product Inquiry Module allows customers to make inquiry about a product directly from the product page.&#xD;
+&#xD;
+Features of Imedia Product Inquiry Module&#xD;
+&#xD;
+1. Add an Inquiry Form: Allows customers to ask question about a product directly from the product page&#xD;
+2. Configuration Setting: Enable/Disable option in System &gt; Configuration &gt; Product Inquiry.&#xD;
+3. Customizable Heading: Admin can change the inquiry form heading and FAQ heading.</description>
+    <notes>First Stable Release</notes>
+    <authors><author><name>iMediaDesigns</name><user>imediadesigns</user><email>info@imediadesigns.org</email></author></authors>
+    <date>2014-05-30</date>
+    <time>08:36:43</time>
+    <contents><target name="magecommunity"><dir name="Imedia"><dir name="ProductInquiry"><dir name="Block"><dir name="Adminhtml"><dir name="Inquiry"><dir name="Edit"><file name="Form.php" hash="3f9ca4f8926c78f4ffb68ba536c6244e"/><file name="Tab.php" hash="2dbd39304457b90b5f54bef5ade04e25"/></dir><file name="Edit.php" hash="7e3e0cfcb5f782fb3a5c40b9224706de"/><file name="Grid.php" hash="9fdead225ff2ade30ff3420dd08bcfd8"/></dir><file name="Inquiry.php" hash="6170a6a12ca75db2228a2e907f710aea"/></dir><file name="Inquiry.php" hash="1859fc656d768b01fa24558e7a96c305"/></dir><dir name="Helper"><file name="Data.php" hash="809fbf5d640ed14fc1d4455bf0bc6e31"/></dir><dir name="Model"><file name="Inquiry.php" hash="cb38007f71a555d12ab1da2cf3e793d8"/><dir name="Mysql4"><dir name="Inquiry"><file name="Collection.php" hash="bdddfd1fff04705db7d2164315aba7e1"/></dir><file name="Inquiry.php" hash="9833feace959df2413020768c44ff343"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><file name="InquiryController.php" hash="1e79f1319abe8ebe1c7c0083cf58dd91"/></dir><file name="FormController.php" hash="5baa3d7a1799a778db9371d021b55536"/></dir><dir name="etc"><file name="adminhtml.xml" hash="8b2cd5cce639979142ec01a684876d9a"/><file name="config.xml" hash="b3e0c3885a9d0a4e271b57ce89ef5f9a"/><file name="system.xml" hash="69b5222ed47a177fd3d9b775087a2f1d"/></dir><dir name="sql"><dir name="imedia_productinquiry_setup"><file name="mysql4-install-0.0.1.php" hash="f516c7b1ce402e274b449b2ac8db7448"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Imedia_ProductInquiry.xml" hash="851f43daffdc755a66b11dce78314603"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><dir name="imedia"><file name="productinquiry.xml" hash="630d27b9f1331757b58f96d4f5004adc"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><dir name="imedia"><file name="productinquiry.xml" hash="cd94a21fd76969ba2edcb4665f6983bd"/></dir></dir><dir name="template"><dir name="imedia"><file name="productinquiry.phtml" hash="2cb1bb7cb8c300a4b6c003a0befda796"/></dir></dir></dir></dir></dir></target><target name="magelocale"><dir name="en_US"><dir name="template"><dir name="email"><file name="user_inquiry.html" hash="dcf9a2d09dcefe15381cc72689349770"/></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="default"><dir name="default"><dir name="css"><dir name="imedia"><file name="productinquiry.css" hash="4e0b2f848cfe9044dc256b4cad1d6f15"/></dir></dir><dir name="js"><dir name="imedia"><file name="jqueryInquiry.js" hash="315136162c3a659832e0f3bc79377315"/><file name="noConflict.js" hash="3179f2255b046d5f2e9a71e365287bef"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>
