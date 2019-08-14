@@ -93,7 +93,14 @@ class Imedia_ProductInquiry_Adminhtml_InquiryController extends Mage_Adminhtml_C
                 
 				if($postData['send_mail'] == 1)
 				{	
-					$emailTemplate = Mage::getModel('core/email_template')->loadDefault('user_inquiry_template');
+					
+					$userTemplateVal = Mage::getStoreConfig('inquiry/product/template');
+					if($userTemplateVal == 'inquiry_product_template' || $userTemplateVal == ''){ 
+						$emailTemplate = Mage::getModel('core/email_template')->loadDefault('inquiry_product_template');
+					}else{
+						$emailTemplate = Mage::getModel('core/email_template')->load($userTemplateVal);
+					}
+					
 					//Getting the Store E-Mail Sender Name.
 					$storeName = Mage::getStoreConfig('general/store_information/name');
 					//Getting the Store General E-Mail.
@@ -117,8 +124,7 @@ class Imedia_ProductInquiry_Adminhtml_InquiryController extends Mage_Adminhtml_C
 								->setFromName($storeName)
 								->setType('html');
 					
-					$mail->send();			
-
+					$mail->send();
 				}
 				$model->setData($postData);
 				$model->save();

@@ -31,15 +31,7 @@ if($collections->count() != 0):
 </div>
 <?php endif; ?>
 <div class="inquiry_area">	
-	<div id="success" style="display:none;">
-		<ul class="messages">
-			<li class="success-msg">
-			<ul>
-				<li><span>Your Inquiry about <?php echo ' <u>'.$productName.'</u> '; ?> is Successfully Submitted.</span></li>
-			</ul>
-			</li>
-		</ul>
-	</div>
+	<div id="success"></div>
 	<h1>
 	<?php 
 	$headingTwo = Mage::getStoreConfig('inquiry/product/second_heading');
@@ -56,37 +48,44 @@ if($collections->count() != 0):
 			<input type="hidden" value="<?php echo $productName; ?>" name="product_name" />
 			<input type="hidden" value="<?php echo $productSku; ?>" name="product_sku" />
 			<div class="inquiry-content-block">
-				<label>Name</label>
+				<label><?php echo $this->__('Name'); ?>*</label>
 				<p>
 					<input type="text" name="user_name" id="user_name" class="required-entry validate-text" placeholder="Enter Your Name">
 				</p>
 			</div>
 			<div class="inquiry-content-block">
-				<label>Email</label>
+				<label><?php echo $this->__('Email'); ?>*</label>
 				<p>
 					<input type="text" name="user_email" id="user_email" class="required-entry validate-email" placeholder="Enter Your Email">
 				</p>
 			</div>
 			<div class="inquiry-content-block">	
-				<label>Question</label>
+				<label><?php echo $this->__('Question'); ?>*</label>
 				<p>
 					<textarea name="user_question" id="user_question" class="required-entry validate-text" placeholder="Enter Your Question"></textarea>
 				</p>
 			</div>
-			<button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
+			<?php 
+			$val1 = rand(1,9);
+			$val2 = rand(1,9);
+			$combinedVal = "$val1 + $val2";
+			$data = $val1 + $val2;
+			Mage::getSingleton('core/session')->setCaptchaVal($data);
+			?>
+			<div class="inquiry-content-block">	
+				<label><?php echo $this->__('Captcha');?>*</label>
+				<p>
+					<?php echo $combinedVal; ?> = <input name="captcha_answer" class="required-entry validate-digits" type="text" /><?php echo " enter the result ex:(3 + 2 = 5)"; ?>
+				</p>
+			</div>
+			<button type="submit" title="Submit" class="button"><span><span><?php echo $this->__('Submit') ;?></span></span></button>
 			<div id="loading" style="display:none;"><?php echo $this->__('Please Wait....'); ?></div>
-		</form>	
-	</div>	
+		</form>
+		<p>* <?php echo $this->__('required fields'); ?></p>	
+	</div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
-	jQuery(document).ready(function($){
-		$(this).scrollTop(0);
-		var height = $('.inquiry_question_area').height();
-		if(height > 350){
-			$('.inquiry_question_area').css({"overflow-y":"scroll","max-height":"400px"});
-		}
-	});
 	var formId = 'inquiryForm';
 	var myForm = new VarienForm(formId, true);
     var postUrl = '<?php echo $this->getUrl("inquiry/form/submit") ?>';
@@ -101,7 +100,13 @@ if($collections->count() != 0):
                     evalScripts:false,
 					reset:true,
                     onComplete:function(request, json) {
-                        Element.show('success');
+						var change = request.responseText.split('&&');
+						if(change[1] == 1){
+							$('success').update(change[0]);
+						}else{
+							$('success').update(request.responseText);
+							$(formId).reset();
+						}
 						Element.hide('loading');
                         Element.show('formSuccess');						
                     },
@@ -109,7 +114,7 @@ if($collections->count() != 0):
                         Element.show('formLoader');	
 					},
 					onSuccess:function(request, json){
-                        $(formId).reset();
+                       
 					},
                     parameters: $(formId).serialize(true),
                 }

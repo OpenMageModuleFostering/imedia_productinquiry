@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Imedia_ProductInquiry>
-			<version>0.0.1</version>
+			<version>0.0.2</version>
 		</Imedia_ProductInquiry>
 	</modules> 
 	<frontend>
@@ -70,11 +70,18 @@
         </helpers>
 		<template>
 			<email>
-				<user_inquiry_template translate="label" module="imedia_productinquiry">
-					<label>Product Inquiry</label>
-					<file>user_inquiry.html</file>
+				<admin_notification_template translate="label" module="imedia_productinquiry">
+					<label>Product Inquiry Admin Notification</label>
+					<file>imedia/admin_notification.html</file>
 					<type>html</type>
-				</user_inquiry_template>
+				</admin_notification_template>
+			</email>
+			<email>
+				<inquiry_product_template translate="label" module="imedia_productinquiry">
+					<label>Product Inquiry Reply Mail To User</label>
+					<file>imedia/user_inquiry.html</file>
+					<type>html</type>
+				</inquiry_product_template>
 			</email>
 		</template>
     </global>
@@ -93,7 +100,7 @@
         <layout>
             <updates>
                 <imedia_productinquiry>
-                <file>imedia/productinquiry.xml</file>
+					<file>imedia/productinquiry.xml</file>
                 </imedia_productinquiry>
             </updates>
         </layout>
